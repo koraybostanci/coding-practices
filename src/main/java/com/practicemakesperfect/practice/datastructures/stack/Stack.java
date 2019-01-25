@@ -4,11 +4,20 @@ import java.util.EmptyStackException;
 
 public class Stack<T> {
 
+    public class StackNode<T> {
+        private T value;
+        private StackNode<T> next;
+
+        StackNode(T value) {
+            this.value = value;
+        }
+    }
+
     private StackNode<T> top;
 
     public void push(T value) {
         StackNode<T> item = new StackNode(value);
-        item.setNext(top);
+        item.next = top;
         top = item;
     }
 
@@ -16,7 +25,7 @@ public class Stack<T> {
         if (top == null) {
             throw new EmptyStackException();
         }
-        return top.getValue();
+        return top.value;
     }
 
     public T pop() {
@@ -24,8 +33,8 @@ public class Stack<T> {
             throw new EmptyStackException();
         }
 
-        T value = top.getValue();
-        top = top.getNext();
+        T value = top.value;
+        top = top.next;
         return value;
     }
 

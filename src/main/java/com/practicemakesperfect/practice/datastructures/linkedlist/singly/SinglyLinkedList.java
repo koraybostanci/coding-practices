@@ -3,6 +3,15 @@ package com.practicemakesperfect.practice.datastructures.linkedlist.singly;
 
 public class SinglyLinkedList<T> {
 
+    public class Node<T> {
+        private T value;
+        private Node<T> next;
+
+        public Node(T value) {
+            this.value = value;
+        }
+    }
+
     private Node<T> head;
 
     public void push(T value) {
@@ -10,7 +19,7 @@ public class SinglyLinkedList<T> {
         if (head == null) {
             head = newNode;
         } else {
-            newNode.setNext(head);
+            newNode.next = head;
             head = newNode;
         }
     }
@@ -21,10 +30,10 @@ public class SinglyLinkedList<T> {
             head = newNode;
         } else {
             Node node = head;
-            while (node.getNext() != null) {
-                node = node.getNext();
+            while (node.next != null) {
+                node = node.next;
             }
-            node.setNext(newNode);
+            node.next = newNode;
         }
     }
 
@@ -35,27 +44,27 @@ public class SinglyLinkedList<T> {
             return;
         }
 
-        if (node.getValue() == value) {
-            head = node.getNext();
+        if (node.value == value) {
+            head = node.next;
             return;
         }
 
         Node next = null;
         while (node != null) {
-            next = node.getNext();
+            next = node.next;
 
             if (next == null) {
                 return;
             }
 
-            if (next.getValue() == value) {
+            if (next.value == value) {
                 break;
             }
             node = next;
         }
 
-        node.setNext(next.getNext());
-        next.setNext(null);
+        node.next = next.next;
+        next.next = null;
     }
 
     public Node getHead() {

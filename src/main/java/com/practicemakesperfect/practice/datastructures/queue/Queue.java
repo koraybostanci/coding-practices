@@ -5,6 +5,15 @@ import java.util.NoSuchElementException;
 
 public class Queue<T> {
 
+    public class QueueNode<T> {
+        private T value;
+        private QueueNode<T> next;
+
+        QueueNode(T value) {
+            this.value = value;
+        }
+    }
+
     private QueueNode<T> first;
     private QueueNode<T> last;
 
@@ -12,7 +21,7 @@ public class Queue<T> {
         QueueNode<T> item = new QueueNode(value);
 
         if (last != null) {
-            last.setNext(item);
+            last.next = item;
         }
         last = item;
 
@@ -26,8 +35,8 @@ public class Queue<T> {
             throw new NoSuchElementException();
         }
 
-        T value = first.getValue();
-        first = first.getNext();
+        T value = first.value;
+        first = first.next;
 
         if (first == null) {
             last = null;
@@ -41,7 +50,7 @@ public class Queue<T> {
             throw new NoSuchElementException();
         }
 
-        return first.getValue();
+        return first.value;
     }
 
     public boolean isEmpty() {

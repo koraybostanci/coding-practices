@@ -1,5 +1,7 @@
 package com.practicemakesperfect.practice.datastructures.tree.binary;
 
+import com.practicemakesperfect.practice.datastructures.tree.binary.BinaryTree.BinaryTreeNode;
+
 public class BinaryTreeTraverser {
 
     public void traverseInOrder(BinaryTreeNode node) {

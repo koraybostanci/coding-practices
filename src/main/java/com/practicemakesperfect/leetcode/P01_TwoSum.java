@@ -1,4 +1,4 @@
-package com.coding.practicemakesperfect.algorithms;
+package com.practicemakesperfect.leetcode;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

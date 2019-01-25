@@ -1,6 +1,5 @@
 package com.practicemakesperfect.crackingthecodinginterview.chapter2_linkedlists;
 
-import com.practicemakesperfect.practice.datastructures.linkedlist.singly.Node;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -13,14 +12,23 @@ import org.junit.jupiter.api.Test;
  */
 public class P03_DeleteMiddleNode {
 
+    public class Node<T> {
+        private T value;
+        private Node<T> next;
+
+        public Node(T value) {
+            this.value = value;
+        }
+    }
+
     public boolean deleteNode(Node<Integer> node) {
-        if (node == null || node.getNext() == null) {
+        if (node == null || node.next == null) {
             return false;
         }
 
-        Node<Integer> next = node.getNext();
-        node.setNext(next.getNext());
-        node.setValue(next.getValue());
+        Node<Integer> next = node.next;
+        node.next = next.next;
+        node.value = next.value;
         return true;
     }
 
@@ -30,11 +38,11 @@ public class P03_DeleteMiddleNode {
         Node<Integer> head = buildLinkedList(10);
 
         //  Value=3
-        Node<Integer> node = head.getNext().getNext();
+        Node<Integer> node = head.next.next;
         boolean success = deleteNode(node);
 
         Assertions.assertTrue(success);
-        Assertions.assertEquals(4, head.getNext().getNext().getValue());
+        Assertions.assertEquals(4, (int)head.next.next.value);
     }
 
     private Node<Integer> buildLinkedList(int count) {
@@ -42,7 +50,7 @@ public class P03_DeleteMiddleNode {
         Node<Integer> current = head;
         for (int i = 2; i <= count; i++) {
             Node<Integer> node = new Node<>(i);
-            current.setNext(node);
+            current.next = node;
             current = node;
         }
         return head;

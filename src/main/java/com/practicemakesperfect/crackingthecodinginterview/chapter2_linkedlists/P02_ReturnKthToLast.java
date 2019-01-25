@@ -1,6 +1,5 @@
 package com.practicemakesperfect.crackingthecodinginterview.chapter2_linkedlists;
 
-import com.practicemakesperfect.practice.datastructures.linkedlist.singly.Node;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -8,6 +7,15 @@ import org.junit.jupiter.api.Test;
  * Return Kth to Last: Implement an algorithm to find the kth to last element of a singly linked list.
  */
 public class P02_ReturnKthToLast {
+
+    public class Node<T> {
+        private T value;
+        private Node<T> next;
+
+        public Node(T value) {
+            this.value = value;
+        }
+    }
 
     /**
      *  Solution-1 : push all items to a stack and start to pop until you have the kth item.
@@ -29,12 +37,12 @@ public class P02_ReturnKthToLast {
             if (p1 == null) {
                 return null;
             }
-            p1 = p1.getNext();
+            p1 = p1.next;
         }
 
         while (p1 != null) {
-            p1 = p1.getNext();
-            p2 = p2.getNext();
+            p1 = p1.next;
+            p2 = p2.next;
         }
 
         return p2;
@@ -45,7 +53,7 @@ public class P02_ReturnKthToLast {
         Node<String> head = buildLinkedList(10);
 
         Node<String> node = findNodeAt(head, 3);
-        Assertions.assertEquals("8",node.getValue());
+        Assertions.assertEquals("8",node.value);
     }
 
     @Test
@@ -61,7 +69,7 @@ public class P02_ReturnKthToLast {
         Node<String> current = head;
         for (int i = 2; i <= count; i++) {
             Node<String> node = new Node<>(String.valueOf(i));
-            current.setNext(node);
+            current.next = node;
             current = node;
         }
         return head;

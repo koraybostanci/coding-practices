@@ -1,7 +1,5 @@
 package com.practicemakesperfect.crackingthecodinginterview.chapter2_linkedlists;
 
-import com.practicemakesperfect.practice.datastructures.linkedlist.singly.Node;
-import com.practicemakesperfect.practice.datastructures.linkedlist.singly.SinglyLinkedList;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
@@ -13,35 +11,44 @@ import java.util.*;
  */
 public class P01_RemoveDups {
 
+    public class Node<T> {
+        private T value;
+        private Node<T> next;
+
+        public Node(T value) {
+            this.value = value;
+        }
+    }
+
     public Node<String> removeDuplicates(Node<String> head) {
         Set<String> uniqueItems = new HashSet<>();
 
         Node<String> previous = null;
         Node<String> current = head;
         while (current != null) {
-            String value = current.getValue();
+            String value = current.value;
             if (uniqueItems.contains(value)) {
-                previous.setNext(current.getNext());
+                previous.next = current.next;
             } else {
                 uniqueItems.add(value);
                 previous = current;
             }
-            current = current.getNext();
+            current = current.next;
         }
         return head;
     }
 
     @Test
     public void test() {
-        SinglyLinkedList<String> linkedList = new SinglyLinkedList<>();
-        linkedList.push("a");
-        linkedList.push("b");
-        linkedList.push("b");
-        linkedList.push("a");
-        linkedList.push("a");
-        linkedList.push("c");
-        linkedList.push("d");
+        LinkedList<Node<String>> linkedList = new LinkedList<>();
+        linkedList.push(new Node<>("a"));
+        linkedList.push(new Node<>("b"));
+        linkedList.push(new Node<>("b"));
+        linkedList.push(new Node<>("a"));
+        linkedList.push(new Node<>("a"));
+        linkedList.push(new Node<>("c"));
+        linkedList.push(new Node<>("d"));
 
-        Node<String> node = removeDuplicates(linkedList.getHead());
+        Node<String> node = removeDuplicates(linkedList.getFirst());
     }
 }

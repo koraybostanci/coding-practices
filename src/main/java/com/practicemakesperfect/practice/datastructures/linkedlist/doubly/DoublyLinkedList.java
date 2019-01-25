@@ -2,18 +2,26 @@ package com.practicemakesperfect.practice.datastructures.linkedlist.doubly;
 
 public class DoublyLinkedList<T> {
 
+    public class Node<T> {
+        private T value;
+        private Node<T> prev;
+        private Node<T> next;
+
+        public Node(T value) {
+            this.value = value;
+        }
+
+    }
+
     private Node<T> head;
     private Node<T> tail;
-
-    public DoublyLinkedList() {
-    }
 
     public void push(T value) {
         Node<T> newNode = new Node<T>(value);
         if (head == null) {
             head = newNode;
         } else {
-            newNode.setNext(head);
+            newNode.next = head;
             head = newNode;
         }
     }
@@ -25,9 +33,9 @@ public class DoublyLinkedList<T> {
         } else {
             Node node = head;
             while (node != null) {
-                node = node.getNext();
+                node = node.next;
             }
-            node.setNext(newNode);
+            node.next = newNode;
         }
     }
 }
