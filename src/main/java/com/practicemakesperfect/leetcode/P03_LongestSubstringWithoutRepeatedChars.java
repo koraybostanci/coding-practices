@@ -39,8 +39,7 @@ public class P03_LongestSubstringWithoutRepeatedChars {
 
         int n = s.length();
 
-        int max = 0;
-        int i=0, j=0;
+        int i=0, j=0, max=0;
 
         Set<Character> chars = new HashSet<>();
         while (i < n && j < n) {

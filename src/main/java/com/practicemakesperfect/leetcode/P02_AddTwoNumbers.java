@@ -17,43 +17,43 @@ package com.practicemakesperfect.leetcode;
  */
 public class P02_AddTwoNumbers {
 
-    public class ListNode {
+    public class Node {
         int val;
-        ListNode next;
-        ListNode(int x) {
+        Node next;
+        Node(int x) {
             val = x;
         }
     }
 
-    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+    public Node addTwoNumbers(Node n1, Node n2) {
 
         int total = 0;
         int value = 0;
         int carry = 0;
-        ListNode result = new ListNode(0);
+        Node result = new Node(0);
 
-        ListNode c1 = l1;
-        ListNode c2 = l2;
-        ListNode c = result;
-        while (c1 != null || c2 != null) {
-            int x = c1 != null ? c1.val : 0;
-            int y = c2 != null ? c2.val : 0;
+        Node p = n1;
+        Node q = n2;
+        Node c = result;
+
+        while (p != null || q != null) {
+            int x = p != null ? p.val : 0;
+            int y = q != null ? q.val : 0;
+
             total = x + y + carry;
 
             carry = total / 10;
             value = total % 10;
 
-            ListNode node = new ListNode(value);
-            c.next = node;
+            c.next = new Node(value);
             c = c.next;
 
-            c1 = c1 != null ? c1.next : null;
-            c2 = c2 != null ? c2.next : null;
+            p = p != null ? p.next : null;
+            q = q != null ? q.next : null;
         }
 
         if (carry > 0) {
-            ListNode node = new ListNode(carry);
-            c.next = node;
+            c.next = new Node(carry);
         }
 
         return result.next;

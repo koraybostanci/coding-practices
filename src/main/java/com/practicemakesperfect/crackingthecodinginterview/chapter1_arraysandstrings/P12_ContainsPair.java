@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
 /**
- * Write a function that takes an array of integers and a sum, and returns true if a pair of any elements
+ * Write a function that takes an array of sorted integers and a sum, and returns true if a pair of any elements
  * in the given array has sum of given sum parameter.
  */
 public class P12_ContainsPair {
