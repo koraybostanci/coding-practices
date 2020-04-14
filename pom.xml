@@ -4,19 +4,20 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>practice-makes-perfect</groupId>
+    <groupId>com.coding</groupId>
     <artifactId>practice-makes-perfect</artifactId>
-    <version>0.0.1</version>
+    <version>1.0</version>
     <packaging>jar</packaging>
 
-    <name>practice-makes-perfect</name>
-    <description>practice-makes-perfect</description>
+    <name>Practice Makes Perfect</name>
+    <description>Docs, Solutions</description>
 
     <properties>
+        <java.version>11</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>8</java.version>
         <junit.jupiter.version>5.3.2</junit.jupiter.version>
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
     </properties>
 
     <dependencies>
@@ -35,11 +36,6 @@
             <artifactId>junit-vintage-engine</artifactId>
             <version>${junit.jupiter.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-junit</artifactId>
-            <version>LATEST</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -47,9 +43,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <source>8</source>
-                    <target>8</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
             </plugin>
         </plugins>
