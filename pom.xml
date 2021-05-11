@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.coding</groupId>
-    <artifactId>practice-makes-perfect</artifactId>
+    <artifactId>coding-practices</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
 
-    <name>practice-makes-perfect</name>
+    <name>coding-practices</name>
     <description>Practice Makes Perfect</description>
 
     <properties>
